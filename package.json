@@ -1,6 +1,6 @@
 {
-  "name": "soajs.granta",
-  "description": "SOAJS Granta",
+  "name": "soajs.epg",
+  "description": "SOAJS Endpoint Generator",
   "version": "0.0.1",
   "author": {
     "name": "soajs team",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:soajs/soajs.granta.git"
+    "url": "git@github.com:soajs/soajs.epg.git"
   },
   "license": "Apache-2.0",
   "engines": {
@@ -20,9 +20,7 @@
   "devDependencies": {
   },
   "dependencies": {
-    "soajs": "1.0.*",
-    "soajs.composer": "*",
-    "soap": "*",
-    "express": "*"
+    "soajs.composer": "git://github.com/soajs/soajs.composer.git#develop",
+    "soap": "*"
   }
 }
