@@ -1,6 +1,7 @@
 "use strict";
 
-var fs = require("fs");
+// var fs = require("fs");
+let configFile;
 var request = require('request');
 
 var Mongo = require("soajs").mongo;
@@ -57,14 +58,13 @@ function getEndpointAndCreateConfig(cb) {
 			routesWithin.forEach(function (eachRoute) {
 				if (schema[key][eachRoute]) {
 					let mw = schema[key][eachRoute]["mw"];
-					// endpoint.schema[key][eachRoute]["mw"] = mw.replace("%%__dirname%%", __dirname);
-					endpoint.schema[key][eachRoute]["mw"] = __dirname + "/lib/mw/soap/index.js";
+					let driver = endpoint.models.name === 'soap' ? 'soap' : 'rest';
+					endpoint.schema[key][eachRoute]["mw"] = __dirname + `/lib/mw/${driver}/index.js`;
 				}
 			});
 		});
 		
 		if (endpoint.models && endpoint.models.path) {
-			// endpoint.models.path = endpoint.models.path.replace("%%__dirname%%", __dirname);
 			endpoint.models.path = __dirname + "/lib/model/";
 		}
 		
@@ -101,12 +101,16 @@ function getEndpointAndCreateConfig(cb) {
 			let customScript = "var customScript = function (customParamSent, cb) {\n" + cust + "};\nmodule.exports = customScript;";
 			fs.writeFile(__dirname + "/lib/utils/customScript.js", customScript, function () {
 				delete item.customScript;
-				let configOutput = "var services = \n" + JSON.stringify(item, null, 2) + ";\nmodule.exports = services;";
-				fs.writeFile(__dirname + "/config.js", configOutput, cb);
+				configFile = item;
+				cb();
+				// let configOutput = "var services = \n" + JSON.stringify(item, null, 2) + ";\nmodule.exports = services;";
+				// fs.writeFile(__dirname + "/config.js", configOutput, cb);
 			});
 		} else {
-			let configOutput = "var services = \n" + JSON.stringify(item, null, 2) + ";\nmodule.exports = services;";
-			fs.writeFile(__dirname + "/config.js", configOutput, cb);
+			configFile = item;
+			cb();
+			// let configOutput = "var services = \n" + JSON.stringify(item, null, 2) + ";\nmodule.exports = services;";
+			// fs.writeFile(__dirname + "/config.js", configOutput, cb);
 		}
 	});
 }
@@ -114,7 +118,7 @@ function getEndpointAndCreateConfig(cb) {
 function turnOnService() {
 	// delete process.env.SOAJS_REGISTRY_API;
 	var composer = require("soajs.composer");
-	composer.deploy(__dirname + "/config.js", function (error) {
+	composer.deploy(configFile, function (error) {
 		MongoClient.closeDb();
 		if (error) {
 			throw new Error(error);
