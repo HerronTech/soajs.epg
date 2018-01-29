@@ -1,3 +1,5 @@
+// todo: we should delete this file and stop using it
+
 const config = {
 	"auth": {
 		"username": "username",

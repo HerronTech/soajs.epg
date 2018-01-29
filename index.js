@@ -54,14 +54,17 @@ function getEndpointAndCreateConfig(cb) {
 		let schemaKeys = Object.keys(schema); // get/post/...
 		
 		schemaKeys.forEach(function (key) {
-			let routesWithin = Object.keys(schema[key]); // get: /route1
-			routesWithin.forEach(function (eachRoute) {
-				if (schema[key][eachRoute]) {
-					let mw = schema[key][eachRoute]["mw"];
-					let driver = endpoint.models.name === 'soap' ? 'soap' : 'rest';
-					endpoint.schema[key][eachRoute]["mw"] = __dirname + `/lib/mw/${driver}/index.js`;
-				}
-			});
+			if(key!=='commonFields'){
+				let routesWithin = Object.keys(schema[key]); // get: /route1
+				routesWithin.forEach(function (eachRoute) {
+					
+					if (schema[key][eachRoute]) {
+						let mw = schema[key][eachRoute]["mw"];
+						let driver = endpoint.models.name === 'soap' ? 'soap' : 'rest';
+						endpoint.schema[key][eachRoute]["mw"] = __dirname + `/lib/mw/${driver}/index.js`;
+					}
+				});
+			}
 		});
 		
 		if (endpoint.models && endpoint.models.path) {
@@ -82,8 +85,9 @@ function getEndpointAndCreateConfig(cb) {
 			return cb(err);
 		}
 		if (!item) {
-			return cb(new Error("No Endpoint System found for:", process.env.SOAJS_ENDPOINT_NAME));
+			throw new Error("No Endpoint System found for: " + process.env.SOAJS_ENDPOINT_NAME);
 		}
+		
 		
 		fixEndpointDynamicVariables(item);
 		

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "soajs.composer": "git://github.com/soajs/soajs.composer.git#develop",
-    "soap": "*"
+    "soap": "*",
+    "nonce": "*"
   }
 }
