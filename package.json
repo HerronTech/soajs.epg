@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "soajs.composer": "git://github.com/soajs/soajs.composer.git#develop",
-    "soap": "*",
     "nonce": "*",
     "request": "*",
     "xml2json": "*"
