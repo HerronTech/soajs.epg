@@ -22,6 +22,7 @@
   "dependencies": {
     "soajs.composer": "git://github.com/soajs/soajs.composer.git#develop",
     "nonce": "*",
+    "normalize-url": "*",
     "request": "*",
     "xml2json": "*"
   }
