@@ -3,7 +3,7 @@
 The SOAJS EPG is an endpoint service generator that loads the endpoint configuration created via the API builder of **Herron Tech** and uses it to launch the service on top of the [SOAJS Composer](https://github.com/soajs/soajs.composer)
 
 ## API Builder
-The API builder is an advanced system by [Herron Tech](www.herrontech.com) that enables creating and managing endpoint services via a simple UI wizard.
+The API builder is an advanced system by [Herron Tech](https://www.herrontech.com) that enables creating and managing endpoint services via a simple UI wizard.
 
 ## SOAJS Composer
 The SOAJS Composer is an engine component that generates **REST API Services** on top of the **SOAJS** framework ([Read More](https://github.com/soajs/soajs.composer)).
