@@ -1,7 +1,7 @@
 {
   "name": "soajs.epg",
   "description": "SOAJS Endpoint Generator",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": {
     "name": "soajs team",
     "email": "team@soajs.org"
@@ -20,7 +20,7 @@
   "devDependencies": {
   },
   "dependencies": {
-    "soajs.composer": "git://github.com/soajs/soajs.composer.git#develop",
+    "soajs.composer": "2.2.1",
     "nonce": "*",
     "normalize-url": "*",
     "request": "*",
