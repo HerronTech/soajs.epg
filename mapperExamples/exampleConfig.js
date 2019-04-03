@@ -3,12 +3,13 @@ let provision = {
 
         // url OR host
         url: "http://ws.cdyne.com/phoneverify/phoneverify.asmx",
+
+        //to be deleted [host & request]
         host: {
             protocol: "http",
             domain: "ws.cdyne.com",
             port: "80"
         },
-
         request: {
             headers: {
                 'Content-Type': 'application/json'

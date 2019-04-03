@@ -16,7 +16,7 @@
 
 let mapper = {
     pipeline: {
-        "mylet": {
+        "mytrigger": {
             trigger: {
                 label: "call1",
                 timeout: 3600000,
