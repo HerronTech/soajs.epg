@@ -61,7 +61,8 @@ let mapper = [
                 {"headers": {"what": "ikey", "from": "map", "path": "tony"}}
             ],
             "map": {
-                "access_token": {"path": "access_token"}
+                "access_token": {"path": "access_token"},
+                "anything": {"match": /[0-9]+(.[0-9]+)?/}
             }
         }
     },

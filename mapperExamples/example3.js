@@ -121,7 +121,10 @@ let mapper = {
                             "value": "owner"
                         }
                     }
-                ]
+                ],
+                "map": {
+                    "anything": {"match": /\w*(?=Name)/}
+                }
             }
         },
         "myAuthresponse": {
